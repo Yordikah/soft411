@@ -1,0 +1,29 @@
+name: lab2-white-box
+
+on:
+  push:
+    branches: [main]
+    paths: ["lab2-white-box/**", ".github/workflows/lab2.yml"]
+  pull_request:
+    branches: [main]
+    paths: ["lab2-white-box/**", ".github/workflows/lab2.yml"]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: lab2-white-box
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: pip install pytest
+      - name: Manual test cases (Lab Task 4)
+        run: python run_manual_tests.py
+      - name: Automated tests (Lab Task 6)
+        run: |
+          set -o pipefail
+          python -m pytest -v | tee ci_pytest.txt
+          echo "::notice title=Lab 2 pytest::$(tail -n 1 ci_pytest.txt)"

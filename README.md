@@ -38,5 +38,6 @@ tests/test_api.py                  TC13–TC18 (API + security)
 tests/perf_smoke.py                performance smoke check
 reports/ci_*                       results + screenshots from the GitHub Actions run
 .github/workflows/tests.yml        CI pipeline
+lab2-white-box/                    Lab 2 – white-box testing (separate activity)
 reports/                           saved test output
 ```

@@ -1,0 +1,30 @@
+ID     Mark   Att  Expected               Actual                 Result
+---------------------------------------------------------------------------
+TC01     -1    80  Invalid mark           Invalid mark           PASS
+TC02    101    80  Invalid mark           Invalid mark           PASS
+TC03     60    -1  Invalid attendance     Invalid attendance     PASS
+TC04     60   101  Invalid attendance     Invalid attendance     PASS
+TC05     80    70  Fail - Low Attendance  Fail - Low Attendance  PASS
+TC06     75    80  A                      A                      PASS
+TC07     65    80  B                      B                      PASS
+TC08     55    80  C                      C                      PASS
+TC09     45    80  D                      D                      PASS
+TC10     35    80  F                      F                      PASS
+TC11      0    80  F                      F                      PASS
+TC12    100    80  A                      A                      PASS
+TC13     39    80  F                      F                      PASS
+TC14     40    80  D                      D                      PASS
+TC15     49    80  D                      D                      PASS
+TC16     50    80  C                      C                      PASS
+TC17     59    80  C                      C                      PASS
+TC18     60    80  B                      B                      PASS
+TC19     69    80  B                      B                      PASS
+TC20     70    80  A                      A                      PASS
+TC21     80    74  Fail - Low Attendance  Fail - Low Attendance  PASS
+TC22     80    75  A                      A                      PASS
+TC23     80   100  A                      A                      PASS
+TC24     80     0  Fail - Low Attendance  Fail - Low Attendance  PASS
+TC25     -1    -1  Invalid mark           Invalid mark           PASS
+TC26   69.5    80  B                      B                      PASS
+---------------------------------------------------------------------------
+26/26 passed

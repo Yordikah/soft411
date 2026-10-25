@@ -1,0 +1,6 @@
+('75', 80) -> EXCEPTION TypeError: '<' not supported between instances of 'str' and 'int'
+(None, 80) -> EXCEPTION TypeError: '<' not supported between instances of 'NoneType' and 'int'
+(75, '80') -> EXCEPTION TypeError: '<' not supported between instances of 'str' and 'int'
+(True, 80) -> 'F'
+(nan, 80) -> 'F'
+(75, nan) -> 'A'
