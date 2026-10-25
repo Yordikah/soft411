@@ -39,5 +39,6 @@ tests/perf_smoke.py                performance smoke check
 reports/ci_*                       results + screenshots from the GitHub Actions run
 .github/workflows/tests.yml        CI pipeline
 lab2-white-box/                    Lab 2 – white-box testing (separate activity)
+lecture2-selenium/                 Lecture 2 – first Selenium tests
 reports/                           saved test output
 ```

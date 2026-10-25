@@ -1,0 +1,36 @@
+name: lecture2-selenium
+
+on:
+  push:
+    branches: [main]
+    paths: ["lecture2-selenium/**", ".github/workflows/lecture2.yml"]
+  pull_request:
+    branches: [main]
+    paths: ["lecture2-selenium/**", ".github/workflows/lecture2.yml"]
+
+jobs:
+  selenium:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: lecture2-selenium
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: pip install selenium pytest
+      - name: Run Selenium tests (headless Chrome)
+        run: |
+          set -o pipefail
+          python -m pytest -v | tee ci_selenium.txt
+      - name: Publish results
+        if: always()
+        run: |
+          python3 -c 'import sys;t=open("ci_selenium.txt").read().strip().splitlines();body="\n".join([l for l in t if "PASSED" in l or "FAILED" in l or "ERROR" in l]+[t[-1]]);print("::notice title=Selenium tests::"+body.replace("%","%25").replace("\n","%0A"))'
+      - name: Upload screenshot
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: selenium-screenshot
+          path: lecture2-selenium/screenshots/

@@ -2,3 +2,4 @@ __pycache__/
 *.pyc
 .venv/
 reports/junit.xml
+lecture2-selenium/screenshots/
