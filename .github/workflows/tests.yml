@@ -12,10 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
@@ -25,17 +25,42 @@ jobs:
           pip install -r requirements.txt
 
       - name: Unit + API tests (release blocking)
-        run: python -m pytest tests -v --junitxml=reports/junit.xml
+        run: |
+          set -o pipefail
+          mkdir -p reports
+          python -m pytest tests -v --junitxml=reports/junit.xml | tee reports/ci_pytest.txt
+          {
+            echo "## Unit + API tests"
+            echo '```'
+            tail -n 25 reports/ci_pytest.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Security scan with Bandit (SAST, release blocking on medium+)
-        run: bandit -r app -ll
+        run: |
+          set -o pipefail
+          bandit -r app -ll | tee reports/ci_bandit.txt
+          {
+            echo "## Bandit security scan"
+            echo '```'
+            cat reports/ci_bandit.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Performance smoke test (p95 < 200 ms)
-        run: python -m tests.perf_smoke
+        run: |
+          set -o pipefail
+          python -m tests.perf_smoke | tee reports/ci_perf.json
+          {
+            echo "## Performance smoke test"
+            echo '```json'
+            cat reports/ci_perf.json
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload test report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: test-report
           path: reports/
