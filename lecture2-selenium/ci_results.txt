@@ -1,0 +1,4 @@
+test_search.py::test_selenium_homepage_title PASSED                      [ 33%]
+test_search.py::test_submit_web_form PASSED                              [ 66%]
+test_search.py::test_typed_text_is_kept_in_field PASSED                  [100%]
+============================== 3 passed in 16.98s ==============================
