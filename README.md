@@ -36,6 +36,7 @@ app/api.py            Flask API + input validation
 tests/test_registration_rules.py   TC01–TC12, TC19 (unit / component)
 tests/test_api.py                  TC13–TC18 (API + security)
 tests/perf_smoke.py                performance smoke check
+reports/ci_*                       results + screenshots from the GitHub Actions run
 .github/workflows/tests.yml        CI pipeline
 reports/                           saved test output
 ```

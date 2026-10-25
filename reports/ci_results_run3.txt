@@ -1,0 +1,67 @@
+===== Performance smoke test =====
+{
+  "requests": 500,
+  "concurrency": 20,
+  "errors": 0,
+  "throughput_rps": 849.1,
+  "p50_ms": 16.4,
+  "p95_ms": 23.4,
+  "max_ms": 198.8,
+  "p95_limit_ms": 200,
+  "passed": true
+}
+
+
+===== Bandit security scan =====
+Run started:2026-10-25 16:42:45.167466+00:00
+
+Test results:
+	No issues identified.
+
+Code scanned:
+	Total lines of code: 194
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 0
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 0
+Files skipped (0):
+
+
+===== Unit and API tests =====
+
+tests/test_api.py::FunctionalApiTests::test_TC13_register_via_api_returns_201_and_updates_schedule PASSED [  5%]
+tests/test_api.py::FunctionalApiTests::test_TC14_unknown_course_and_student_return_404 PASSED [ 10%]
+tests/test_api.py::FunctionalApiTests::test_TC15_invalid_input_partitions_return_400 
+tests/test_api.py::FunctionalApiTests::test_TC15_invalid_input_partitions_return_400 PASSED [ 15%]
+tests/test_api.py::SecurityApiTests::test_TC16_injection_style_input_is_rejected 
+tests/test_api.py::SecurityApiTests::test_TC16_injection_style_input_is_rejected PASSED [ 21%]
+tests/test_api.py::SecurityApiTests::test_TC17_oversized_payload_is_rejected_with_413 PASSED [ 26%]
+tests/test_api.py::SecurityApiTests::test_TC18_errors_do_not_leak_stack_traces PASSED [ 31%]
+tests/test_registration_rules.py::CreditLimitTests::test_TC01_twenty_credits_is_accepted PASSED [ 36%]
+tests/test_registration_rules.py::CreditLimitTests::test_TC02_exactly_21_credits_is_accepted PASSED [ 42%]
+tests/test_registration_rules.py::CreditLimitTests::test_TC03_22_credits_is_rejected PASSED [ 47%]
+tests/test_registration_rules.py::CreditLimitTests::test_TC04_dropping_last_course_below_1_credit_is_rejected PASSED [ 52%]
+tests/test_registration_rules.py::CreditLimitTests::test_TC19_dropping_down_to_exactly_1_credit_is_allowed PASSED [ 57%]
+tests/test_registration_rules.py::CapacityTests::test_TC05_last_seat_can_be_taken_and_next_student_is_rejected PASSED [ 63%]
+tests/test_registration_rules.py::CapacityTests::test_TC06_seat_is_freed_after_drop PASSED [ 68%]
+tests/test_registration_rules.py::DecisionTableTests::test_TC07_prerequisite_missing_is_rejected PASSED [ 73%]
+tests/test_registration_rules.py::DecisionTableTests::test_TC08_all_conditions_true_registration_succeeds PASSED [ 78%]
+tests/test_registration_rules.py::DecisionTableTests::test_TC09_duplicate_registration_is_rejected PASSED [ 84%]
+tests/test_registration_rules.py::RegistrationPeriodStateTests::test_TC10_register_before_period_opens_is_rejected PASSED [ 89%]
+tests/test_registration_rules.py::RegistrationPeriodStateTests::test_TC11_register_after_period_closes_is_rejected PASSED [ 94%]
+tests/test_registration_rules.py::RegistrationPeriodStateTests::test_TC12_invalid_transitions_are_rejected PASSED [100%]
+
+--- generated xml file: /home/runner/work/soft411/soft411/reports/junit.xml ----
+==================== 19 passed, 9 subtests passed in 0.26s =====================
+
+
