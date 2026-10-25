@@ -1,0 +1,26 @@
+Test run: 2026-10-25 18:05 | Python 3.13.17 | Flask 3.1.3
+
+test_TC13_register_via_api_returns_201_and_updates_schedule (test_api.FunctionalApiTests.test_TC13_register_via_api_returns_201_and_updates_schedule) ... ok
+test_TC14_unknown_course_and_student_return_404 (test_api.FunctionalApiTests.test_TC14_unknown_course_and_student_return_404) ... ok
+test_TC15_invalid_input_partitions_return_400 (test_api.FunctionalApiTests.test_TC15_invalid_input_partitions_return_400) ... ok
+test_TC16_injection_style_input_is_rejected (test_api.SecurityApiTests.test_TC16_injection_style_input_is_rejected) ... ok
+test_TC17_oversized_payload_is_rejected_with_413 (test_api.SecurityApiTests.test_TC17_oversized_payload_is_rejected_with_413) ... ok
+test_TC18_errors_do_not_leak_stack_traces (test_api.SecurityApiTests.test_TC18_errors_do_not_leak_stack_traces) ... ok
+test_TC05_last_seat_can_be_taken_and_next_student_is_rejected (test_registration_rules.CapacityTests.test_TC05_last_seat_can_be_taken_and_next_student_is_rejected) ... ok
+test_TC06_seat_is_freed_after_drop (test_registration_rules.CapacityTests.test_TC06_seat_is_freed_after_drop) ... ok
+test_TC01_twenty_credits_is_accepted (test_registration_rules.CreditLimitTests.test_TC01_twenty_credits_is_accepted) ... ok
+test_TC02_exactly_21_credits_is_accepted (test_registration_rules.CreditLimitTests.test_TC02_exactly_21_credits_is_accepted) ... ok
+test_TC03_22_credits_is_rejected (test_registration_rules.CreditLimitTests.test_TC03_22_credits_is_rejected) ... ok
+test_TC04_dropping_last_course_below_1_credit_is_rejected (test_registration_rules.CreditLimitTests.test_TC04_dropping_last_course_below_1_credit_is_rejected) ... ok
+test_TC19_dropping_down_to_exactly_1_credit_is_allowed (test_registration_rules.CreditLimitTests.test_TC19_dropping_down_to_exactly_1_credit_is_allowed) ... ok
+test_TC07_prerequisite_missing_is_rejected (test_registration_rules.DecisionTableTests.test_TC07_prerequisite_missing_is_rejected) ... ok
+test_TC08_all_conditions_true_registration_succeeds (test_registration_rules.DecisionTableTests.test_TC08_all_conditions_true_registration_succeeds) ... ok
+test_TC09_duplicate_registration_is_rejected (test_registration_rules.DecisionTableTests.test_TC09_duplicate_registration_is_rejected) ... ok
+test_TC10_register_before_period_opens_is_rejected (test_registration_rules.RegistrationPeriodStateTests.test_TC10_register_before_period_opens_is_rejected) ... ok
+test_TC11_register_after_period_closes_is_rejected (test_registration_rules.RegistrationPeriodStateTests.test_TC11_register_after_period_closes_is_rejected) ... ok
+test_TC12_invalid_transitions_are_rejected (test_registration_rules.RegistrationPeriodStateTests.test_TC12_invalid_transitions_are_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 0.031s
+
+OK

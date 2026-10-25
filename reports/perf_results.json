@@ -1,0 +1,11 @@
+{
+  "requests": 500,
+  "concurrency": 20,
+  "errors": 0,
+  "throughput_rps": 709.8,
+  "p50_ms": 26.1,
+  "p95_ms": 30.8,
+  "max_ms": 59.6,
+  "p95_limit_ms": 200,
+  "passed": true
+}
