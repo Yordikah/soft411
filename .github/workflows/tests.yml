@@ -58,6 +58,15 @@ jobs:
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
 
+      - name: Publish results as annotations
+        if: always()
+        run: |
+          note() { python3 -c 'import sys,urllib.parse;t=open(sys.argv[2]).read() if len(sys.argv)>2 else "";print("::notice title="+sys.argv[1]+"::"+t.replace("%","%25").replace("\r","").replace("\n","%0A"))' "$@"; }
+          tail -n 25 reports/ci_pytest.txt > /tmp/p.txt || true
+          note "Unit and API tests" /tmp/p.txt
+          note "Bandit security scan" reports/ci_bandit.txt || true
+          note "Performance smoke test" reports/ci_perf.json || true
+
       - name: Upload test report
         if: always()
         uses: actions/upload-artifact@v5
